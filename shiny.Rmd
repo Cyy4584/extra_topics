@@ -1,0 +1,13 @@
+---
+title: "shiny"
+author: "Yingyu Cui"
+date: "2024-11-19"
+output: html_document
+---
+
+```{r setup}
+
+```
+flexdashboard + flexible 
+shinyapps.io is common way to host document/app
+

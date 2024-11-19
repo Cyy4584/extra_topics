@@ -1,0 +1,106 @@
+---
+title: "Shiny Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+runtime: shiny
+
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+library(viridis)
+```
+
+
+```{r}
+# need to load some data in the background, bu sure to load the data you actually need to save some time.
+# we could set showing the code in the right upper corner 
+
+```
+
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+```{r}
+choices = 
+  dataset |> 
+  distinct(some column) |>
+  pull()
+
+slectInput(Id = name, label = selected by user, choices = c(choices), selected = the defalt one showing on the screen)
+# likely, we are creating a droup down menu for the user to select from
+
+```
+
+```{r}
+# another drop out column
+slectInput(
+  values
+  h3()
+  min - same could be pulled from the data sets 
+  max()
+  value = ()
+  ) 
+```
+
+```{r}
+radioButtons(
+  inputId = "name",
+  label = "Select a name",
+  choices = c("name1", "name2", "name3"),
+  selected = "name1"
+)
+# so we could have 3 different versions for user choices
+```
+
+
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+renderPrint(
+  input[["name"]]
+  #when we choose one in above, we could see different names in this part
+
+  # when filtering, set the column as the input, so the user could see the data they want to see
+  # also we could change several variables in a filter
+  
+  plot_ly(data = dataset, x = ~column, y = ~column, color = ~column, type = "scatter", mode = "markers")
+  
+  # if it is sth like price range, we should use [][1]:[][2]
+  
+)
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+
+ renderPlotly(
+  bar
+)
+
+```
+
+### Chart C
+
+```{r}
+renderPlotly(
+  box
+)
+```
+
+# how we could use the function in a sspecific plot not in a dashboard
+# and lot of sourses in the pages below p8105 shinyapps.io
